@@ -1,26 +1,75 @@
-@import "tailwindcss";
 
+/* stylelint-disable at-rule-no-unknown */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- CSS Variables ---------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #fafafa;
+  --fg: #0f0f12;
+  --muted: #8b8b94;
+  --accent: #6EE7F9;
+  --accent-hover: #22D3EE;
+  --card: rgba(255, 255, 255, 0.65);
+  --theme-transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --bg: #0b0b0c;
+  --fg: #e6e6e6;
+  --muted: #8b8b94;
+  --accent: #6EE7F9;
+  --accent-hover: #22D3EE;
+  --card: rgba(20, 20, 22, 0.55);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Smooth theme transitions (respect reduced motion) */
+*,
+*::before,
+*::after {
+  transition: var(--theme-transition);
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
 }
 
+/* Base */
+html, body {
+  height: 100%;
+}
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-feature-settings: "liga" 1, "calt" 1;
+}
+
+/* Utilities */
+.glass {
+  background-color: var(--card);
+  backdrop-filter: blur(12px);
+  @apply border border-white/20 dark:border-white/10 shadow-lg;
+}
+
+.brutal {
+  @apply border-2 border-black dark:border-white;
+  box-shadow: theme(boxShadow.brutalLight);
+}
+.dark .brutal {
+  box-shadow: theme(boxShadow.brutalDark);
+}
+
+.focus-ring {
+  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent focus-visible:ring-offset-transparent;
+}
+
+/* Links focus */
+a:focus-visible {
+  @apply outline-none ring-2 ring-accent ring-offset-2;
+}
+
+/* Prose */
+.prose {
+  @apply text-[var(--fg)];
 }
