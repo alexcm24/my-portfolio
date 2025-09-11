@@ -1,4 +1,4 @@
 // .eslintrc.json
-{
-  "extends": ["next/core-web-vitals"]
-}
+export default {
+  extends: ["next/core-web-vitals"]
+};

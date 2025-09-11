@@ -1,6 +1,4 @@
 
-/* stylelint-disable at-rule-no-unknown */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,6 +11,7 @@
   --accent: #6EE7F9;
   --accent-hover: #22D3EE;
   --card: rgba(255, 255, 255, 0.65);
+  --grid: rgba(0, 0, 0, 0.06);
   --theme-transition: background-color 250ms ease, color 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
 }
 
@@ -23,6 +22,7 @@
   --accent: #6EE7F9;
   --accent-hover: #22D3EE;
   --card: rgba(20, 20, 22, 0.55);
+  --grid: rgba(255, 255, 255, 0.06);
 }
 
 /* Smooth theme transitions (respect reduced motion) */
@@ -36,9 +36,7 @@
 }
 
 /* Base */
-html, body {
-  height: 100%;
-}
+html, body { height: 100%; }
 body {
   background: var(--bg);
   color: var(--fg);
@@ -56,20 +54,23 @@ body {
   @apply border-2 border-black dark:border-white;
   box-shadow: theme(boxShadow.brutalLight);
 }
-.dark .brutal {
-  box-shadow: theme(boxShadow.brutalDark);
-}
+.dark .brutal { box-shadow: theme(boxShadow.brutalDark); }
 
 .focus-ring {
   @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent focus-visible:ring-offset-transparent;
 }
 
-/* Links focus */
-a:focus-visible {
-  @apply outline-none ring-2 ring-accent ring-offset-2;
-}
+a:focus-visible { @apply outline-none ring-2 ring-accent ring-offset-2; }
 
-/* Prose */
-.prose {
-  @apply text-[var(--fg)];
+.prose { @apply text-[var(--fg)]; }
+
+/* Subtle grid with radial mask for hero background */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  /* Soft vignette so edges fade */
+  -webkit-mask-image: radial-gradient(100% 60% at 50% 35%, black 60%, transparent 100%);
+  mask-image: radial-gradient(100% 60% at 50% 35%, black 60%, transparent 100%);
 }
