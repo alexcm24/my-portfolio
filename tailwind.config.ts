@@ -4,9 +4,9 @@ import type { Config } from "tailwindcss";
 const config: Config = {
   darkMode: "class",
   content: [
-    "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./lib/**/*.{ts,tsx}"
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./lib/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     extend: {
@@ -20,10 +20,6 @@ const config: Config = {
           hover: "#22D3EE"
         },
         muted: "#8b8b94"
-      },
-      borderRadius: {
-        xl: "1rem",
-        "2xl": "1.25rem"
       },
       boxShadow: {
         brutalLight: "6px 6px 0 0 rgba(0,0,0,1)",

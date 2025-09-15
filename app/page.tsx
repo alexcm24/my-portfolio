@@ -12,28 +12,30 @@ import Tag from "@/components/Tag";
 import { projects } from "@/lib/projects";
 import { experience } from "@/lib/experience";
 import { SITE } from "@/lib/site";
-import HeroBackdrop from "@/components/HeroBackdrop";
 
 export default function HomePage() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
     <>
-      {/* Hero (no image) */}
-      <section className="relative overflow-hidden">
-        <HeroBackdrop />
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-[var(--bg)]">
+        <div className="absolute inset-0 -z-10 bg-[var(--hero-gradient)]" />
         <div className="mx-auto max-w-6xl px-6 pt-16 pb-12 sm:pt-24 sm:pb-16">
-          <div className="relative">
+          <div className="grid items-center gap-10 md:grid-cols-[1.2fr_.8fr]">
             <motion.div
               initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
               animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
               className="space-y-6"
             >
-              <span className="text-sm font-mono text-muted">— Portfolio</span>
-              <h1 className="text-4xl font-semibold sm:text-5xl md:text-6xl leading-tight inline-block brutal rounded-lg px-3 py-1">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold brutal leading-none tracking-tight flex flex-wrap items-baseline gap-3">
                 {SITE.name}
+                <span className="text-base font-mono px-3 py-1 rounded-md glass self-center">
+                  Portfolio
+                </span>
               </h1>
+
               <h2 className="text-xl sm:text-2xl text-muted">
                 {SITE.role} · {SITE.location}
               </h2>
@@ -54,31 +56,6 @@ export default function HomePage() {
                 </Button>
               </div>
 
-              {/* Quick meta chips */}
-              <div className="flex flex-wrap gap-2 pt-2">
-                <Tag label="TypeScript" />
-                <Tag label="Next.js" />
-                <Tag label="Framer Motion" />
-                <Tag label="Tailwind" />
-              </div>
-
-              {/* Glass stats row for depth */}
-              <div className="mt-6 grid gap-4 sm:grid-cols-3">
-                <div className="glass rounded-2xl p-4">
-                  <div className="text-2xl font-semibold">3+</div>
-                  <div className="text-sm text-muted">Active Projects</div>
-                </div>
-                <div className="glass rounded-2xl p-4">
-                  <div className="text-2xl font-semibold">UX-first</div>
-                  <div className="text-sm text-muted">Clean, accessible UI</div>
-                </div>
-                <div className="glass rounded-2xl p-4">
-                  <div className="text-2xl font-semibold">Let’s chat</div>
-                  <div className="text-sm text-muted">Open to collabs</div>
-                </div>
-              </div>
-
-              {/* Social row */}
               <div className="flex gap-4 pt-3">
                 <Link href={SITE.github} prefetch className="focus-ring underline" aria-label="GitHub profile">
                   GitHub
@@ -125,12 +102,12 @@ export default function HomePage() {
         <div className="grid gap-8 md:grid-cols-3">
           <div className="md:col-span-2 space-y-4">
             <p>
-              I’m {SITE.name} — currently a {SITE.role}. I’m exploring different areas of software development and
-              enjoy building useful, well-designed projects that put the user first.
+              I’m {SITE.name} — currently a {SITE.role}. I’m exploring different areas of software
+              development and enjoy building useful, well-designed projects that put the user first.
             </p>
             <p>
-              When I’m not coding, you’ll catch me training at the gym or planning the next trip. I value clean design,
-              clear communication, and steady iteration.
+              When I’m not coding, you’ll catch me training at the gym or planning the next trip. I
+              value clean design, clear communication, and steady iteration.
             </p>
           </div>
           <div>
@@ -150,7 +127,8 @@ export default function HomePage() {
       <Section id="contact" label="— CONTACT" title="Say Hello">
         <div className="glass rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <p className="max-w-prose">
-            Interested in working together or just want to say hi? I’m open to chats, collaborations, and interesting ideas.
+            Interested in working together or just want to say hi? I’m open to chats, collaborations,
+            and interesting ideas.
           </p>
           <div className="flex gap-3">
             <Button
