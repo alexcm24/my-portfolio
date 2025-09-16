@@ -15,7 +15,7 @@ export default function ProjectCard({ project }: { project: Project }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10%" }}
       transition={{ duration: 0.25 }}
-      className="glass rounded-2xl p-4 focus-within:ring-2 focus-within:ring-accent"
+      className="glass hover-lift hover-glow rounded-2xl p-4 focus-within:ring-2 focus-within:ring-accent"
     >
       <div className="relative mb-4 h-40 w-full overflow-hidden rounded-xl">
         <Image
@@ -41,7 +41,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           <Link
             href={project.live}
             prefetch
-            className="focus-ring inline-flex items-center gap-1 text-sm underline"
+            className="focus-ring inline-flex items-center gap-1 text-sm underline hover-lift transition-colors duration-200 ease-out hover:text-accent"
             aria-label={`Open live site for ${project.title}`}
             target="_blank"
             rel="noopener noreferrer"
@@ -53,7 +53,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           <Link
             href={project.github}
             prefetch
-            className="focus-ring inline-flex items-center gap-1 text-sm underline"
+            className="focus-ring inline-flex items-center gap-1 text-sm underline hover-lift transition-colors duration-200 ease-out hover:text-accent"
             aria-label={`Open GitHub repo for ${project.title}`}
             target="_blank"
             rel="noopener noreferrer"

@@ -26,11 +26,12 @@ export default function Button({
   rel
 }: Props) {
   const base =
-    "focus-ring inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition-transform active:translate-y-[1px]";
+    "focus-ring inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium hover-lift transition-colors duration-200 ease-out active:translate-y-[1px] motion-reduce:active:translate-y-0";
+  const hoverGlow = brutal ? "" : "hover-glow";
   const styles =
     variant === "primary"
-      ? "bg-accent text-black hover:bg-accent-hover"
-      : "glass border border-white/20 dark:border-white/10 hover:brightness-105";
+      ? cn("bg-accent text-black hover:bg-accent-hover", hoverGlow)
+      : cn("glass border border-white/20 dark:border-white/10 hover:brightness-105", hoverGlow);
 
   const brutalCls = brutal ? "brutal" : "";
 

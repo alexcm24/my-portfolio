@@ -70,11 +70,11 @@ export default function HomePage() {
 
             {/* Glass stats row */}
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <div className="glass rounded-2xl p-4">
+              <div className="glass hover-lift hover-glow rounded-2xl p-4">
                 <div className="text-2xl font-semibold">3+</div>
                 <div className="text-sm text-muted">Active Projects</div>
               </div>
-              <div className="glass rounded-2xl p-4">
+              <div className="glass hover-lift hover-glow rounded-2xl p-4">
                 <div className="text-2xl font-semibold">Let’s chat</div>
                 <div className="text-sm text-muted">Open to collabs</div>
               </div>
@@ -82,19 +82,39 @@ export default function HomePage() {
 
             {/* Social row */}
             <div className="flex gap-4 pt-3">
-              <Link href={SITE.github} prefetch className="focus-ring underline" aria-label="GitHub profile">
+              <Link
+                href={SITE.github}
+                prefetch
+                className="focus-ring inline-flex items-center hover-lift transition-colors duration-200 ease-out underline hover:text-accent"
+                aria-label="GitHub profile"
+              >
                 GitHub
               </Link>
-              <Link href={SITE.linkedin} prefetch className="focus-ring underline" aria-label="LinkedIn profile">
+              <Link
+                href={SITE.linkedin}
+                prefetch
+                className="focus-ring inline-flex items-center hover-lift transition-colors duration-200 ease-out underline hover:text-accent"
+                aria-label="LinkedIn profile"
+              >
                 LinkedIn
               </Link>
               {SITE.x && (
-                <Link href={SITE.x} prefetch className="focus-ring underline" aria-label="X profile">
+                <Link
+                  href={SITE.x}
+                  prefetch
+                  className="focus-ring inline-flex items-center hover-lift transition-colors duration-200 ease-out underline hover:text-accent"
+                  aria-label="X profile"
+                >
                   X
                 </Link>
               )}
               {SITE.email && (
-                <Link href={`mailto:${SITE.email}`} prefetch className="focus-ring underline" aria-label="Send email">
+                <Link
+                  href={`mailto:${SITE.email}`}
+                  prefetch
+                  className="focus-ring inline-flex items-center hover-lift transition-colors duration-200 ease-out underline hover:text-accent"
+                  aria-label="Send email"
+                >
                   Email
                 </Link>
               )}
@@ -135,7 +155,7 @@ export default function HomePage() {
             </p>
           </div>
           <div>
-            <div className="glass rounded-2xl p-4">
+            <div className="glass hover-lift hover-glow rounded-2xl p-4">
               <h3 className="font-semibold mb-3">Skills</h3>
               <div className="flex flex-wrap gap-2">
                 {["TypeScript", "Next.js", "React", "Tailwind CSS", "Node.js", "Python", "SQL"].map((s) => (
@@ -149,7 +169,7 @@ export default function HomePage() {
 
       {/* Contact */}
       <Section id="contact" label="— CONTACT" title="Say Hello">
-        <div className="glass rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="glass hover-lift hover-glow rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <p className="max-w-prose">
             Interested in working together or just want to say hi? I’m open to chats, collaborations, and interesting ideas.
           </p>

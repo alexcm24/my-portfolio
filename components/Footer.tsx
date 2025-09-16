@@ -11,13 +11,31 @@ export default function Footer() {
           <nav aria-label="Footer">
             <ul className="flex gap-4">
               <li>
-                <Link href="/#projects" prefetch className="focus-ring hover:underline">Projects</Link>
+                <Link
+                  href="/#projects"
+                  prefetch
+                  className="focus-ring inline-flex items-center hover-lift transition-colors duration-200 ease-out hover:text-accent"
+                >
+                  Projects
+                </Link>
               </li>
               <li>
-                <Link href="/#experience" prefetch className="focus-ring hover:underline">Experience</Link>
+                <Link
+                  href="/#experience"
+                  prefetch
+                  className="focus-ring inline-flex items-center hover-lift transition-colors duration-200 ease-out hover:text-accent"
+                >
+                  Experience
+                </Link>
               </li>
               <li>
-                <Link href="/#contact" prefetch className="focus-ring hover:underline">Contact</Link>
+                <Link
+                  href="/#contact"
+                  prefetch
+                  className="focus-ring inline-flex items-center hover-lift transition-colors duration-200 ease-out hover:text-accent"
+                >
+                  Contact
+                </Link>
               </li>
             </ul>
           </nav>

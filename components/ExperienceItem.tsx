@@ -3,7 +3,7 @@ import type { Experience } from "@/lib/experience";
 
 export default function ExperienceItem({ item }: { item: Experience }) {
   return (
-    <article className="relative rounded-2xl border border-white/20 dark:border-white/10 p-5 glass">
+    <article className="relative rounded-2xl border border-white/20 dark:border-white/10 p-5 glass hover-lift hover-glow">
       <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
         <h3 className="text-lg font-semibold">
           {item.role} · <span className="text-muted">{item.company}</span>
