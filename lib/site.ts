@@ -1,6 +1,6 @@
 // lib/site.ts
 export const SITE = {
-  name: "Alex Cañizares",
+  name: "ALEX CAÑIZARES",
   role: "Computer Science Student",
   tagline:
     "Computer Science student exploring different areas of software development with curiosity and a focus on building useful, well-designed projects.",

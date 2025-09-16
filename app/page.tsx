@@ -1,7 +1,6 @@
 // app/page.tsx
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import Section from "@/components/Section";
@@ -19,63 +18,88 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-[var(--bg)]">
-        <div className="absolute inset-0 -z-10 bg-[var(--hero-gradient)]" />
-        <div className="mx-auto max-w-6xl px-6 pt-16 pb-12 sm:pt-24 sm:pb-16">
-          <div className="grid items-center gap-10 md:grid-cols-[1.2fr_.8fr]">
-            <motion.div
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
-              animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="space-y-6"
-            >
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold brutal leading-none tracking-tight flex flex-wrap items-baseline gap-3">
+      <section className="relative overflow-hidden">
+        {/* Background layers (robust, class-based) */}
+        <div aria-hidden="true" className="hero-grid" />
+        <div aria-hidden="true" className="hero-gradient-bg" />
+
+        <div className="relative mx-auto max-w-6xl px-6 pt-16 pb-12 sm:pt-24 sm:pb-16">
+          <motion.div
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
+            animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="space-y-6"
+          >
+            {/* Big brutalist name + small portfolio chip */}
+            <h1 className="leading-none tracking-tight flex flex-wrap items-baseline gap-3">
+              <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black brutal px-2">
                 {SITE.name}
-                <span className="text-base font-mono px-3 py-1 rounded-md glass self-center">
-                  Portfolio
-                </span>
-              </h1>
+              </span>
+              <span className="text-base font-mono px-3 py-1 rounded-md glass self-center">
+                Portfolio
+              </span>
+            </h1>
 
-              <h2 className="text-xl sm:text-2xl text-muted">
-                {SITE.role} · {SITE.location}
-              </h2>
-              <p className="max-w-prose text-lg">{SITE.tagline}</p>
+            <h2 className="text-xl sm:text-2xl text-muted">
+              {SITE.role} · {SITE.location}
+            </h2>
 
-              <div className="flex flex-wrap gap-3 pt-2">
-                <Button href="#projects" variant="primary" brutal ariaLabel="View projects">
-                  View Projects
-                </Button>
-                <Button
-                  href={SITE.resume || "#"}
-                  variant="secondary"
-                  ariaLabel="Download résumé"
-                  target={SITE.resume ? "_blank" : undefined}
-                  rel={SITE.resume ? "noopener noreferrer" : undefined}
-                >
-                  Download Résumé
-                </Button>
+            <p className="max-w-prose text-lg">{SITE.tagline}</p>
+
+            <div className="flex flex-wrap gap-3 pt-2">
+              <Button href="#projects" variant="primary" brutal ariaLabel="View projects">
+                View Projects
+              </Button>
+              <Button
+                href={SITE.resume || "#"}
+                variant="secondary"
+                ariaLabel="Download résumé"
+                target={SITE.resume ? "_blank" : undefined}
+                rel={SITE.resume ? "noopener noreferrer" : undefined}
+              >
+                Download Résumé
+              </Button>
+            </div>
+
+            {/* Tech chips */}
+            <div className="flex flex-wrap gap-2 pt-2">
+              {["TypeScript", "Next.js", "Framer Motion", "Tailwind"].map((s) => (
+                <Tag key={s} label={s} />
+              ))}
+            </div>
+
+            {/* Glass stats row */}
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <div className="glass rounded-2xl p-4">
+                <div className="text-2xl font-semibold">3+</div>
+                <div className="text-sm text-muted">Active Projects</div>
               </div>
-
-              <div className="flex gap-4 pt-3">
-                <Link href={SITE.github} prefetch className="focus-ring underline" aria-label="GitHub profile">
-                  GitHub
-                </Link>
-                <Link href={SITE.linkedin} prefetch className="focus-ring underline" aria-label="LinkedIn profile">
-                  LinkedIn
-                </Link>
-                {SITE.x && (
-                  <Link href={SITE.x} prefetch className="focus-ring underline" aria-label="X profile">
-                    X
-                  </Link>
-                )}
-                {SITE.email && (
-                  <Link href={`mailto:${SITE.email}`} prefetch className="focus-ring underline" aria-label="Send email">
-                    Email
-                  </Link>
-                )}
+              <div className="glass rounded-2xl p-4">
+                <div className="text-2xl font-semibold">Let’s chat</div>
+                <div className="text-sm text-muted">Open to collabs</div>
               </div>
-            </motion.div>
-          </div>
+            </div>
+
+            {/* Social row */}
+            <div className="flex gap-4 pt-3">
+              <Link href={SITE.github} prefetch className="focus-ring underline" aria-label="GitHub profile">
+                GitHub
+              </Link>
+              <Link href={SITE.linkedin} prefetch className="focus-ring underline" aria-label="LinkedIn profile">
+                LinkedIn
+              </Link>
+              {SITE.x && (
+                <Link href={SITE.x} prefetch className="focus-ring underline" aria-label="X profile">
+                  X
+                </Link>
+              )}
+              {SITE.email && (
+                <Link href={`mailto:${SITE.email}`} prefetch className="focus-ring underline" aria-label="Send email">
+                  Email
+                </Link>
+              )}
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -102,12 +126,12 @@ export default function HomePage() {
         <div className="grid gap-8 md:grid-cols-3">
           <div className="md:col-span-2 space-y-4">
             <p>
-              I’m {SITE.name} — currently a {SITE.role}. I’m exploring different areas of software
-              development and enjoy building useful, well-designed projects that put the user first.
+              I’m {SITE.name} — currently a {SITE.role}. I’m exploring different areas of software development and
+              enjoy building useful, well-designed projects that put the user first.
             </p>
             <p>
-              When I’m not coding, you’ll catch me training at the gym or planning the next trip. I
-              value clean design, clear communication, and steady iteration.
+              When I’m not coding, you’ll catch me training at the gym or planning the next trip. I value clean design,
+              clear communication, and steady iteration.
             </p>
           </div>
           <div>
@@ -127,8 +151,7 @@ export default function HomePage() {
       <Section id="contact" label="— CONTACT" title="Say Hello">
         <div className="glass rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <p className="max-w-prose">
-            Interested in working together or just want to say hi? I’m open to chats, collaborations,
-            and interesting ideas.
+            Interested in working together or just want to say hi? I’m open to chats, collaborations, and interesting ideas.
           </p>
           <div className="flex gap-3">
             <Button

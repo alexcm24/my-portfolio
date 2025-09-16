@@ -1,10 +1,11 @@
-/* app/globals.css */
+/* globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ---------- CSS Variables ---------- */
 :root {
+  /* Colors */
   --bg: #fafafa;
   --fg: #0f0f12;
   --muted: #8b8b94;
@@ -12,12 +13,12 @@
   --accent-hover: #22D3EE;
   --card: rgba(255, 255, 255, 0.65);
 
-  /* Light gradient backdrop */
+  /* Light gradient: blue → green airy wash */
   --hero-gradient: radial-gradient(
       circle at 20% 20%,
-      rgba(99, 179, 237, 0.35) 0%,   /* blue */
-      rgba(167, 243, 208, 0.35) 35%, /* green */
-      rgba(255, 255, 255, 0) 80%
+      rgba(99,179,237,0.35) 0%,
+      rgba(167,243,208,0.35) 35%,
+      rgba(255,255,255,0) 80%
     );
 }
 
@@ -29,12 +30,12 @@
   --accent-hover: #22D3EE;
   --card: rgba(20, 20, 22, 0.55);
 
-  /* Dark gradient backdrop */
+  /* Dark gradient: subtle cyan/blue glows */
   --hero-gradient: radial-gradient(
       circle at 30% 30%,
-      rgba(45, 212, 191, 0.15) 0%,   /* cyan/green */
-      rgba(59, 130, 246, 0.15) 30%,  /* blue */
-      rgba(0, 0, 0, 0) 75%
+      rgba(45,212,191,0.15) 0%,
+      rgba(59,130,246,0.15) 30%,
+      rgba(0,0,0,0) 75%
     );
 }
 
@@ -49,13 +50,14 @@
   *, *::before, *::after { transition: none !important; }
 }
 
+html, body { height: 100%; }
 body {
   background: var(--bg);
   color: var(--fg);
   font-feature-settings: "liga" 1, "calt" 1;
 }
 
-/* Utilities */
+/* ---------- Utilities ---------- */
 .glass {
   background-color: var(--card);
   backdrop-filter: blur(12px);
@@ -66,14 +68,40 @@ body {
   @apply border-2 border-black dark:border-white;
   box-shadow: theme(boxShadow.brutalLight);
 }
-.dark .brutal {
-  box-shadow: theme(boxShadow.brutalDark);
-}
+.dark .brutal { box-shadow: theme(boxShadow.brutalDark); }
 
 .focus-ring {
   @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent focus-visible:ring-offset-transparent;
 }
+a:focus-visible { @apply outline-none ring-2 ring-accent ring-offset-2; }
 
-a:focus-visible {
-  @apply outline-none ring-2 ring-accent ring-offset-2;
+/* ---------- Reliable gradient helpers (no Tailwind arbitrary) ---------- */
+.hero-gradient-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image: var(--hero-gradient);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Optional subtle grid overlay (kept simple & safe) */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+  background-image:
+    linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(110% 75% at 50% 25%, black 65%, transparent 100%);
+  -webkit-mask-image: radial-gradient(110% 75% at 50% 25%, black 65%, transparent 100%);
+}
+.dark .hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px);
 }
