@@ -18,6 +18,35 @@ export default function HomePage() {
   const heroRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const header = document.querySelector<HTMLElement>("[data-site-header]");
+    if (!header) {
+      return;
+    }
+
+    const root = document.documentElement;
+
+    const setHeaderHeight = () => {
+      const height = header.getBoundingClientRect().height;
+      root.style.setProperty("--header-height", `${height}px`);
+    };
+
+    setHeaderHeight();
+
+    const resizeObserver = typeof ResizeObserver !== "undefined" ? new ResizeObserver(setHeaderHeight) : null;
+    resizeObserver?.observe(header);
+    window.addEventListener("resize", setHeaderHeight);
+
+    return () => {
+      resizeObserver?.disconnect();
+      window.removeEventListener("resize", setHeaderHeight);
+    };
+  }, []);
+
+  useEffect(() => {
     if (prefersReducedMotion) {
       return;
     }
@@ -59,7 +88,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section ref={heroRef} className="relative overflow-hidden">
+      <section ref={heroRef} className="hero-section relative overflow-hidden isolate">
         {/* Background layers (robust, class-based) */}
         <div aria-hidden="true" className="hero-grid" />
         <div aria-hidden="true" className="hero-gradient-bg animate-hero-gradient" />

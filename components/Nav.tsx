@@ -4,7 +4,10 @@ import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Nav() {
   return (
-    <header className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/30 dark:supports-[backdrop-filter]:bg-neutral-900/30">
+    <header
+      data-site-header
+      className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/30 dark:supports-[backdrop-filter]:bg-neutral-900/30"
+    >
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" prefetch className="focus-ring inline-flex items-center hover-lift transition-transform duration-200 ease-out">

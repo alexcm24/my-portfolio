@@ -16,6 +16,8 @@
   --spotlight-x: 50%;
   --spotlight-y: 40%;
   --spotlight-size: 55%;
+  --hero-vh: 100vh;
+  --header-height: 4rem;
 
   /* Light gradient: blue → green airy wash */
   --hero-gradient: radial-gradient(
@@ -42,6 +44,12 @@
       rgba(59,130,246,0.15) 30%,
       rgba(0,0,0,0) 75%
     );
+}
+
+@supports (height: 100dvh) {
+  :root {
+    --hero-vh: 100dvh;
+  }
 }
 
 /* Smooth theme transitions */
@@ -141,6 +149,12 @@ a:focus-visible { @apply outline-none ring-2 ring-accent ring-offset-2; }
 }
 .dark .hero-spotlight {
   mix-blend-mode: screen;
+}
+
+.hero-section {
+  min-height: calc(var(--hero-vh, 100vh) - var(--header-height, 4rem));
+  display: flex;
+  align-items: center;
 }
 
 @keyframes heroGradientShift {
