@@ -3,6 +3,7 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
 import ProjectCard from "@/components/ProjectCard";
@@ -14,14 +15,55 @@ import { SITE } from "@/lib/site";
 
 export default function HomePage() {
   const prefersReducedMotion = useReducedMotion();
+  const heroRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      return;
+    }
+
+    const node = heroRef.current;
+    if (!node) {
+      return;
+    }
+
+    let raf = 0;
+
+    const updateSpotlight = (evt: PointerEvent) => {
+      const rect = node.getBoundingClientRect();
+      const x = ((evt.clientX - rect.left) / rect.width) * 100;
+      const y = ((evt.clientY - rect.top) / rect.height) * 100;
+
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        node.style.setProperty("--spotlight-x", `${x}%`);
+        node.style.setProperty("--spotlight-y", `${y}%`);
+      });
+    };
+
+    const resetSpotlight = () => {
+      node.style.setProperty("--spotlight-x", "50%");
+      node.style.setProperty("--spotlight-y", "40%");
+    };
+
+    node.addEventListener("pointermove", updateSpotlight);
+    node.addEventListener("pointerleave", resetSpotlight);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      node.removeEventListener("pointermove", updateSpotlight);
+      node.removeEventListener("pointerleave", resetSpotlight);
+    };
+  }, [prefersReducedMotion]);
 
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden">
+      <section ref={heroRef} className="relative overflow-hidden">
         {/* Background layers (robust, class-based) */}
         <div aria-hidden="true" className="hero-grid" />
-        <div aria-hidden="true" className="hero-gradient-bg" />
+        <div aria-hidden="true" className="hero-gradient-bg animate-hero-gradient" />
+        <div aria-hidden="true" className="hero-spotlight" />
 
         <div className="relative mx-auto max-w-6xl px-6 pt-16 pb-12 sm:pt-24 sm:pb-16">
           <motion.div
@@ -32,7 +74,7 @@ export default function HomePage() {
           >
             {/* Big brutalist name + small portfolio chip */}
             <h1 className="leading-none tracking-tight flex flex-wrap items-baseline gap-3">
-              <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black brutal px-2">
+              <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black px-2">
                 {SITE.name}
               </span>
               <span className="text-base font-mono px-3 py-1 rounded-md glass self-center">

@@ -12,6 +12,10 @@
   --accent: #6EE7F9;
   --accent-hover: #22D3EE;
   --card: rgba(255, 255, 255, 0.65);
+  --spotlight-color: rgba(110, 231, 249, 0.28);
+  --spotlight-x: 50%;
+  --spotlight-y: 40%;
+  --spotlight-size: 55%;
 
   /* Light gradient: blue → green airy wash */
   --hero-gradient: radial-gradient(
@@ -29,6 +33,7 @@
   --accent: #6EE7F9;
   --accent-hover: #22D3EE;
   --card: rgba(20, 20, 22, 0.55);
+  --spotlight-color: rgba(110, 231, 249, 0.22);
 
   /* Dark gradient: subtle cyan/blue glows */
   --hero-gradient: radial-gradient(
@@ -97,6 +102,11 @@ a:focus-visible { @apply outline-none ring-2 ring-accent ring-offset-2; }
   background-position: center;
 }
 
+.animate-hero-gradient {
+  animation: heroGradientShift 18s ease-in-out infinite alternate;
+  will-change: background-position, filter;
+}
+
 /* Optional subtle grid overlay (kept simple & safe) */
 .hero-grid {
   position: absolute;
@@ -114,6 +124,38 @@ a:focus-visible { @apply outline-none ring-2 ring-accent ring-offset-2; }
   background-image:
     linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px);
+}
+
+.hero-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(
+    circle at var(--spotlight-x) var(--spotlight-y),
+    var(--spotlight-color) 0%,
+    rgba(110, 231, 249, 0) var(--spotlight-size)
+  );
+  mix-blend-mode: screen;
+  transition: opacity 200ms ease;
+}
+.dark .hero-spotlight {
+  mix-blend-mode: screen;
+}
+
+@keyframes heroGradientShift {
+  0% {
+    filter: hue-rotate(0deg) brightness(1);
+    background-position: 0% 50%;
+  }
+  50% {
+    filter: hue-rotate(10deg) brightness(1.03);
+    background-position: 50% 55%;
+  }
+  100% {
+    filter: hue-rotate(-10deg) brightness(0.98);
+    background-position: 100% 50%;
+  }
 }
 
 /* Motion-safe hover helpers */
@@ -140,5 +182,11 @@ a:focus-visible { @apply outline-none ring-2 ring-accent ring-offset-2; }
   .brutal:hover,
   .brutal:focus-visible {
     transform: none;
+  }
+  .animate-hero-gradient {
+    animation: none;
+  }
+  .hero-spotlight {
+    display: none;
   }
 }
