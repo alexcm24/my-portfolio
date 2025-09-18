@@ -12,6 +12,19 @@ export default function ThemeToggle() {
   useEffect(() => setMounted(true), []);
   const isDark = (mounted ? resolvedTheme : theme) === "dark";
 
+  if (!mounted) {
+    return (
+      <button
+        type="button"
+        className="focus-ring glass hover-lift hover-glow inline-flex h-10 w-10 items-center justify-center rounded-full transition-colors duration-200 ease-out"
+        aria-label="Toggle theme"
+        disabled
+      >
+        <span className="sr-only">Toggle light/dark theme</span>
+      </button>
+    );
+  }
+
   return (
     <button
       type="button"
