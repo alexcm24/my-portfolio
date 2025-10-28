@@ -20,7 +20,6 @@ export const projects: Project[] = [
       "AeroAtlas pulls in live weather data, attraction metadata, and preferred travel styles to build itineraries that feel personal. The dashboard makes it easy to drag and drop days, compare alternate activities, and export to mobile.",
     tech: ["Next.js", "TypeScript", "Tailwind", "OpenStreetMap", "OpenWeather", "Supabase"],
     live: "", // e.g. "https://aeroatlas.app"
-    github: "https://github.com/alexcm24/stockseer",
     image: "/media/aero-thumbnail.jpg",
     demoUrl: "/media/aero-preview.mp4"
   },
