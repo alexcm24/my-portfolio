@@ -157,6 +157,10 @@ a:focus-visible { @apply outline-none ring-2 ring-accent ring-offset-2; }
   align-items: center;
 }
 
+.break-inside-avoid {
+  break-inside: avoid;
+}
+
 @keyframes heroGradientShift {
   0% {
     filter: hue-rotate(0deg) brightness(1);

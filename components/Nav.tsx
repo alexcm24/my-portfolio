@@ -20,6 +20,7 @@ export default function Nav() {
               {[
                 { href: "/#about", label: "About" },
                 { href: "/#projects", label: "Projects" },
+                { href: "/gallery", label: "Gallery" },
                 { href: "/#experience", label: "Experience" },
                 { href: "/#contact", label: "Contact" }
               ].map((l) => (

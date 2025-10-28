@@ -3,19 +3,30 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
 import ProjectCard from "@/components/ProjectCard";
 import ExperienceItem from "@/components/ExperienceItem";
 import Tag from "@/components/Tag";
+import ProjectModal from "@/components/ProjectModal";
 import { projects } from "@/lib/projects";
+import type { Project } from "@/lib/projects";
 import { experience } from "@/lib/experience";
 import { SITE } from "@/lib/site";
 
 export default function HomePage() {
   const prefersReducedMotion = useReducedMotion();
   const heroRef = useRef<HTMLElement | null>(null);
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
+
+  const handleProjectSelect = useCallback((project: Project) => {
+    setActiveProject(project);
+  }, []);
+
+  const handleProjectClose = useCallback(() => {
+    setActiveProject(null);
+  }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") {
@@ -198,7 +209,7 @@ export default function HomePage() {
       <Section id="projects" label="— PROJECTS" title="Selected Work" className="pt-6">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p) => (
-            <ProjectCard key={p.title} project={p} />
+            <ProjectCard key={p.title} project={p} onSelect={handleProjectSelect} />
           ))}
         </div>
       </Section>
@@ -264,6 +275,8 @@ export default function HomePage() {
           </div>
         </div>
       </Section>
+
+      <ProjectModal project={activeProject} onClose={handleProjectClose} />
     </>
   );
 }
