@@ -5,7 +5,7 @@ export const SITE = {
   tagline:
     "Computer Science student exploring different areas of software development with curiosity and a focus on building useful, well-designed projects.",
   location: "Jacksonville, FL",
-  email: "canizaresalex24@gmial.com", // optional: "you@example.com"
+  email: "canizaresalex24@gmail.com", // optional: "you@example.com"
   github: "https://github.com/alexcm24",
   linkedin: "https://www.linkedin.com/in/canizaresalex",
   x: "", // optional
