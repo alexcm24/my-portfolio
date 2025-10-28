@@ -9,7 +9,7 @@ export const SITE = {
   github: "https://github.com/alexcm24",
   linkedin: "https://www.linkedin.com/in/canizaresalex",
   x: "", // optional
-  resume: "", // optional link e.g. "https://..."
+  resume: "/resume.pdf", // optional link e.g. "https://..."
   // Used by metadata/sitemap
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://example.com"
 } as const;
