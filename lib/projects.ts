@@ -43,7 +43,7 @@ export const projects: Project[] = [
       "An opinionated personal site that leans into playful motion, glassmorphism, and accessible color contrast. Features global spotlights, responsive layouts, and content sections sourced from typed data modules.",
     tech: ["Next.js", "TypeScript", "Tailwind", "Framer Motion", "next-themes"],
     live: "/",
-    github: SITE.github,
+    github: "https://github.com/alexcm24/my-portfolio",
     image: "/media/portfolio-thumbnail.jpg",
   }
 ];
