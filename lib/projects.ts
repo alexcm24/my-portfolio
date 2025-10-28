@@ -32,7 +32,7 @@ export const projects: Project[] = [
       "Stockseer ingests minute-level price feeds, applies lightweight statistical filters, and flags unusual momentum. Custom alert rules route to Slack or email so traders only see actionable signals.",
     tech: ["Next.js", "FastAPI", "scikit-learn", "Tailwind"],
     live: "",
-    github: SITE.github,
+    github: "https://github.com/alexcm24/stockseer",
     image: "/media/stockseer-thumbnail.jpg"
   },
   {

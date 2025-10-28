@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import Tag from "@/components/Tag";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import type { Project } from "@/lib/projects";
 
 type ProjectCardProps = {
@@ -83,19 +83,6 @@ export default function ProjectCard({ project, onSelect }: ProjectCardProps) {
             onClick={(evt) => evt.stopPropagation()}
           >
             Live <ExternalLink className="h-4 w-4" />
-          </Link>
-        )}
-        {project.github && (
-          <Link
-            href={project.github}
-            prefetch
-            className="focus-ring inline-flex items-center gap-1 text-sm underline hover-lift transition-colors duration-200 ease-out hover:text-accent"
-            aria-label={`Open GitHub repo for ${project.title}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(evt) => evt.stopPropagation()}
-          >
-            GitHub <Github className="h-4 w-4" />
           </Link>
         )}
       </div>
