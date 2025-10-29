@@ -145,7 +145,7 @@ export default function HomePage() {
 
             {/* Tech chips */}
             <div className="flex flex-wrap gap-2 pt-2">
-              {["TypeScript", "Next.js", "Framer Motion", "Tailwind"].map((s) => (
+              {["TypeScript", "Next.js", "Python", "Tailwind"].map((s) => (
                 <Tag key={s} label={s} />
               ))}
             </div>
