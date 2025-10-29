@@ -23,7 +23,9 @@ export const metadata: Metadata = {
     description: SITE.tagline,
     url: SITE.url,
     siteName: SITE.name,
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: `${SITE.name} — ${SITE.role}` }],
+    images: [
+      { url: "/media/portfolio-thumbnail.jpg", width: 2740, height: 1494, alt: `${SITE.name} — ${SITE.role}` }
+    ],
     locale: "en_US",
     type: "website"
   },
@@ -31,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${SITE.name} — ${SITE.role}`,
     description: SITE.tagline,
-    images: ["/og.png"]
+    images: ["/media/portfolio-thumbnail.jpg"]
   }
 };
 
