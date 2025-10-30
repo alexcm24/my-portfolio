@@ -46,7 +46,7 @@ export const projects: Project[] = [
 • Smooth, responsive UI
 `,
     tech: ["Next.js", "TypeScript", "Tailwind", "Framer Motion", "ColorThief"],
-    live: "/",
+    live: "",
     github: "https://github.com/alexcm24/color-reader",
     image: "/media/color-reader-thumbnail.jpg",
   }
