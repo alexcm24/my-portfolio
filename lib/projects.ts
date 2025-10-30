@@ -35,14 +35,19 @@ export const projects: Project[] = [
     image: "/media/stockseer-thumbnail.jpg"
   },
   {
-    title: "Portfolio vNext",
+    title: "Color-Reader — Accessibility Tool",
     summary:
-      "This site: minimal yet expressive, glass surfaces + brutalist accents, buttery theme transitions.",
-    description:
-      "An opinionated personal site that leans into playful motion, glassmorphism, and accessible color contrast. Features global spotlights, responsive layouts, and content sections sourced from typed data modules.",
-    tech: ["Next.js", "TypeScript", "Tailwind", "Framer Motion", "next-themes"],
+      "A minimal web app that detects dominant colors from any image and displays their HEX, RGB, and HSL values. Designed for designers and developers who need quick palette extraction.",
+    description:`
+• Upload or drag-and-drop images  
+• Auto-extract color palette  
+• Copy color codes instantly 
+• Features test-to-speech for color names 
+• Smooth, responsive UI
+`,
+    tech: ["Next.js", "TypeScript", "Tailwind", "Framer Motion", "ColorThief"],
     live: "/",
-    github: "https://github.com/alexcm24/my-portfolio",
-    image: "/media/portfolio-thumbnail.jpg",
+    github: "https://github.com/alexcm24/color-reader",
+    image: "/media/color-reader-thumbnail.jpg",
   }
 ];

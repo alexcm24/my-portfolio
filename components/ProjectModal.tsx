@@ -4,6 +4,7 @@
 import { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
+import Image from "next/image";
 import Button from "@/components/Button";
 import Tag from "@/components/Tag";
 import type { Project } from "@/lib/projects";
@@ -53,32 +54,46 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
     }
   }, [project]);
 
-  const renderDemo = (demoUrl?: string) => {
-    if (!demoUrl) {
-      return null;
-    }
+  const renderMedia = (demoUrl?: string, image?: string) => {
+    if (demoUrl) {
+      const isEmbed = /youtube\.com|youtu\.be|vimeo\.com/.test(demoUrl);
 
-    const isEmbed = /youtube\.com|youtu\.be|vimeo\.com/.test(demoUrl);
+      if (isEmbed) {
+        return (
+          <div className="aspect-video w-full overflow-hidden rounded-2xl bg-black">
+            <iframe
+              src={demoUrl}
+              title={`${project?.title ?? "Project"} demo video`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="h-full w-full"
+            />
+          </div>
+        );
+      }
 
-    if (isEmbed) {
       return (
-        <div className="aspect-video w-full overflow-hidden rounded-2xl bg-black">
-          <iframe
-            src={demoUrl}
-            title={`${project?.title ?? "Project"} demo video`}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-            className="h-full w-full"
-          />
-        </div>
+        <video controls className="aspect-video w-full rounded-2xl bg-black" poster={project?.image}>
+          <source src={demoUrl} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       );
     }
 
+    if (!image) {
+      return null;
+    }
+
     return (
-      <video controls className="aspect-video w-full rounded-2xl bg-black" poster={project?.image}>
-        <source src={demoUrl} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <div className="relative aspect-video w-full overflow-hidden rounded-2xl">
+        <Image
+          src={image}
+          alt={`${project?.title ?? "Project"} preview`}
+          fill
+          className="object-cover"
+          sizes="(min-width: 1024px) 60vw, 100vw"
+        />
+      </div>
     );
   };
 
@@ -125,13 +140,13 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               <X className="h-4 w-4" />
             </button>
 
-              <div className="space-y-6 pt-6">
+            <div className="space-y-6 pt-6">
               <div className="space-y-2">
                 <h2 className="text-2xl font-semibold">{project.title}</h2>
                 <p className="text-sm text-muted">{project.summary}</p>
               </div>
 
-              {renderDemo(project.demoUrl)}
+              {renderMedia(project.demoUrl, project.image)}
 
               {descriptionParagraphs.length > 0 && (
                 <div className="space-y-4 text-sm leading-relaxed text-muted">
