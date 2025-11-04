@@ -27,7 +27,7 @@ export default function GalleryPage() {
         {galleryImages.map((image, index) => (
           <figure
             key={image.src}
-            className="group break-inside-avoid overflow-hidden rounded-2xl"
+            className="group mb-6 break-inside-avoid overflow-hidden rounded-2xl last:mb-0"
           >
             <Image
               src={image.src}
