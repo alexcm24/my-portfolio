@@ -1,52 +1,31 @@
-// app/layout.tsx
 import type { Metadata } from "next";
-import "./globals.css";
-import { Inter, JetBrains_Mono } from "next/font/google";
-import { ThemeProvider } from "next-themes";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import { SITE } from "@/lib/site";
+import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const serif = Fraunces({ subsets: ["latin"], variable: "--font-serif", display: "swap" });
+const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: {
-    default: `${SITE.name} — ${SITE.role}`,
-    template: `%s — ${SITE.name}`
-  },
-  description: SITE.tagline,
-  alternates: { canonical: "/" },
+  title: `${SITE.name} — ${SITE.role}`,
+  description: SITE.intro,
   openGraph: {
     title: `${SITE.name} — ${SITE.role}`,
-    description: SITE.tagline,
+    description: SITE.intro,
     url: SITE.url,
-    siteName: SITE.name,
-    images: [
-      { url: "/media/portfolio-thumbnail.jpg", width: 2740, height: 1494, alt: `${SITE.name} — ${SITE.role}` }
-    ],
-    locale: "en_US",
-    type: "website"
+    type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: `${SITE.name} — ${SITE.role}`,
-    description: SITE.tagline,
-    images: ["/media/portfolio-thumbnail.jpg"]
-  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${mono.variable} font-sans antialiased min-h-dvh`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="relative flex min-h-dvh flex-col">
-            <Nav />
-            <main id="content" className="flex-1">{children}</main>
-            <Footer />
-          </div>
+    <html lang="en" suppressHydrationWarning className={`${serif.variable} ${sans.variable} ${mono.variable}`}>
+      <body className="font-sans antialiased">
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          {children}
         </ThemeProvider>
       </body>
     </html>
