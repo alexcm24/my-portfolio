@@ -26,10 +26,9 @@ Sticky minimal nav: name (left) · Work / About / Contact / Résumé ↗ / theme
 
 1. **Hero** — eyebrow, serif headline, intro, primary "View Work" + GitHub/LinkedIn/Email.
 2. **Selected Work** — numbered editorial rows (01–03), data-driven.
-3. **About** — short, confident, accurate (UNF, graduating Dec 2026).
-4. **Experience & Recognition** — Apple Technical Specialist (2024–present); Recognition: 1st place / 45 teams, UNF Computing Symposium 2025 (credential only, no project link).
-5. **Stack** — real skills grouped.
-6. **Contact** — dark closing panel; email + socials.
+3. **About** — short, confident, accurate (UNF, graduating Dec 2026). Includes a compact **recognition line**: 1st place / 45 teams, UNF Computing Symposium 2025 (credential only, no project link).
+4. **Stack** — real skills grouped.
+5. **Contact** — dark closing panel; email + socials.
 
 Cut from the current site: `/gallery` route, `lib/gallery.ts`, `public/gallery/*` (~190MB), `app/gallery/page.tsx`, and gallery-only components.
 
@@ -84,11 +83,12 @@ Each project entry supports optional `live`, `code`, `caseStudy`, `image`, `demo
 - `Nav` (sticky, anchors, résumé, `ThemeToggle`)
 - `Hero`
 - `ProjectList` → `ProjectRow` (data-driven from `lib/projects.ts`)
-- `About`
-- `ExperienceRecognition`
+- `About` (includes the recognition line)
 - `Skills`
 - `ContactFooter`
 - `ThemeToggle`
+
+No standalone Experience section (Apple role cut per decision).
 
 ## 8. Tech Approach
 
