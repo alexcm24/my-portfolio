@@ -1,53 +1,51 @@
-import { SITE } from "@/lib/site";
+export type ProjectLink = { label: string; href: string };
 
 export type Project = {
+  num: string; // "01"
   title: string;
-  summary: string;
   description: string;
   tech: string[];
-  live?: string;
-  github?: string;
+  links: ProjectLink[];
   image?: string;
-  demoUrl?: string;
+  imageAlt?: string;
 };
 
 export const projects: Project[] = [
   {
-    title: "AeroAtlas — Travel Companion",
-    summary:
-      "Personalized trip planner with itinerary generation, activity suggestions, and weather-aware schedules.",
+    num: "01",
+    title: "AuraJewel",
     description:
-      "AeroAtlas pulls in live weather data, attraction metadata, and preferred travel styles to build itineraries that feel personal. The dashboard makes it easy to drag and drop days, compare alternate activities, and export to mobile.",
-    tech: ["Next.js", "TypeScript", "Tailwind", "OpenStreetMap", "OpenWeather", "Supabase"],
-    live: "", // e.g. "https://aeroatlas.app"
-    image: "/media/aero-thumbnail.jpg",
-    demoUrl: "/media/aero-preview.mp4"
+      "Production multi-tenant SaaS for independent jewelry retailers: authentication, Postgres row-level security, ticketing, printable receipts, and transactional email. Live and used by a real business.",
+    tech: ["Next.js", "TypeScript", "Supabase", "Resend", "Tailwind", "Radix UI"],
+    links: [{ label: "Code", href: "https://github.com/alexcm24/AuraJewel" }],
+    image: "/media/aurajewel-thumbnail.jpg",
+    imageAlt: "AuraJewel dashboard",
   },
   {
-    title: "Stockseer — Real-Time Insight",
-    summary:
-      "Minimal dashboard for tracking price moves and simple ML signals. Built for clarity and fast page loads.",
+    num: "02",
+    title: "Stockseer",
     description:
-      "Stockseer ingests minute-level price feeds, applies lightweight statistical filters, and flags unusual momentum. Custom alert rules route to Slack or email so traders only see actionable signals.",
-    tech: ["Next.js", "FastAPI", "scikit-learn", "Tailwind"],
-    live: "",
-    github: "https://github.com/alexcm24/stockseer",
-    image: "/media/stockseer-thumbnail.jpg"
+      "Full-stack ML app that forecasts next-day stock prices with linear regression trained on ~2 years of daily closes, visualized as an interactive actual-vs-predicted chart.",
+    tech: ["Next.js", "TypeScript", "FastAPI", "scikit-learn", "Twelve Data"],
+    links: [
+      { label: "Live", href: "https://stockseer-three.vercel.app" },
+      { label: "API", href: "https://stockseer-api.onrender.com/health" },
+      { label: "Code", href: "https://github.com/alexcm24/stockseer" },
+    ],
+    image: "/media/stockseer-thumbnail.jpg",
+    imageAlt: "Stockseer forecast chart",
   },
   {
-    title: "Color-Reader — Accessibility Tool",
-    summary:
-      "A minimal web app that detects dominant colors from any image and displays their HEX, RGB, and HSL values. Designed for designers and developers who need quick palette extraction.",
-    description:`
-• Upload or drag-and-drop images  
-• Auto-extract color palette  
-• Copy color codes instantly 
-• Features test-to-speech for color names 
-• Smooth, responsive UI
-`,
-    tech: ["Next.js", "TypeScript", "Tailwind", "Framer Motion", "ColorThief"],
-    live: "",
-    github: "https://github.com/alexcm24/color-reader",
+    num: "03",
+    title: "Color Reader",
+    description:
+      "Accessible web app that extracts dominant colors from any image using k-means clustering in CIE LAB color space, returning named colors with hex codes. Built with color-vision accessibility in mind.",
+    tech: ["Next.js", "TypeScript", "Tailwind", "Color science"],
+    links: [
+      { label: "Live", href: "https://color-reader-one.vercel.app" },
+      { label: "Code", href: "https://github.com/alexcm24/color-reader" },
+    ],
     image: "/media/color-reader-thumbnail.jpg",
-  }
+    imageAlt: "Color Reader palette extraction",
+  },
 ];
