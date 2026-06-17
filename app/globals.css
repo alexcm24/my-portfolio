@@ -1,210 +1,37 @@
-/* globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ---------- CSS Variables ---------- */
 :root {
-  /* Colors */
-  --bg: #fafafa;
-  --fg: #0f0f12;
-  --muted: #8b8b94;
-  --accent: #6EE7F9;
-  --accent-hover: #22D3EE;
-  --card: rgba(255, 255, 255, 0.65);
-  --spotlight-color: rgba(110, 231, 249, 0.28);
-  --spotlight-x: 50%;
-  --spotlight-y: 40%;
-  --spotlight-size: 55%;
-  --hero-vh: 100vh;
-  --header-height: 4rem;
-
-  /* Light gradient: blue → green airy wash */
-  --hero-gradient: radial-gradient(
-      circle at 20% 20%,
-      rgba(99,179,237,0.35) 0%,
-      rgba(167,243,208,0.35) 35%,
-      rgba(255,255,255,0) 80%
-    );
+  --bg: #f5f3ee;
+  --fg: #1a1a1a;
+  --muted: #6b6862;
+  --line: #e2ded3;
+  --accent: #b08d57;
 }
 
 .dark {
-  --bg: #0b0b0c;
-  --fg: #e6e6e6;
-  --muted: #8b8b94;
-  --accent: #6EE7F9;
-  --accent-hover: #22D3EE;
-  --card: rgba(20, 20, 22, 0.55);
-  --spotlight-color: rgba(110, 231, 249, 0.22);
-
-  /* Dark gradient: subtle cyan/blue glows */
-  --hero-gradient: radial-gradient(
-      circle at 30% 30%,
-      rgba(45,212,191,0.15) 0%,
-      rgba(59,130,246,0.15) 30%,
-      rgba(0,0,0,0) 75%
-    );
+  --bg: #16150f;
+  --fg: #ece9e0;
+  --muted: #9a958a;
+  --line: #2b2925;
+  --accent: #c9a467;
 }
 
-@supports (height: 100dvh) {
-  :root {
-    --hero-vh: 100dvh;
-  }
-}
-
-/* Smooth theme transitions */
-*,
-*::before,
-*::after {
-  transition: background-color 250ms ease, color 250ms ease,
-    border-color 250ms ease, box-shadow 250ms ease;
-}
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition: none !important; }
-}
-
-html, body { height: 100%; }
+html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--fg);
   font-feature-settings: "liga" 1, "calt" 1;
 }
 
-/* ---------- Utilities ---------- */
-.glass {
-  background-color: var(--card);
-  backdrop-filter: blur(12px);
-  @apply border border-white/20 dark:border-white/10 shadow-lg;
-  transition: transform 200ms ease, box-shadow 220ms ease, background-color 200ms ease, border-color 200ms ease;
+@media (prefers-reduced-motion: no-preference) {
+  body { transition: background-color 250ms ease, color 250ms ease; }
 }
 
-.brutal {
-  @apply border-2 border-black dark:border-white;
-  box-shadow: theme(boxShadow.brutalLight);
-  transition: transform 200ms ease, box-shadow 200ms ease;
-}
-.brutal:hover,
-.brutal:focus-visible {
-  box-shadow: 8px 8px 0 0 rgba(0, 0, 0, 1);
-}
-.dark .brutal { box-shadow: theme(boxShadow.brutalDark); }
-.dark .brutal:hover,
-.dark .brutal:focus-visible {
-  box-shadow: 8px 8px 0 0 rgba(255, 255, 255, 1);
-}
-
-.focus-ring {
-  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-accent focus-visible:ring-offset-transparent;
-}
-a:focus-visible { @apply outline-none ring-2 ring-accent ring-offset-2; }
-
-/* ---------- Reliable gradient helpers (no Tailwind arbitrary) ---------- */
-.hero-gradient-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-  background-image: var(--hero-gradient);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-
-.animate-hero-gradient {
-  animation: heroGradientShift 18s ease-in-out infinite alternate;
-  will-change: background-position, filter;
-}
-
-/* Optional subtle grid overlay (kept simple & safe) */
-.hero-grid {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: -2;
-  background-image:
-    linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px);
-  background-size: 24px 24px;
-  mask-image: radial-gradient(110% 75% at 50% 25%, black 65%, transparent 100%);
-  -webkit-mask-image: radial-gradient(110% 75% at 50% 25%, black 65%, transparent 100%);
-}
-.dark .hero-grid {
-  background-image:
-    linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px);
-}
-
-.hero-spotlight {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: -1;
-  background: radial-gradient(
-    circle at var(--spotlight-x) var(--spotlight-y),
-    var(--spotlight-color) 0%,
-    rgba(110, 231, 249, 0) var(--spotlight-size)
-  );
-  mix-blend-mode: screen;
-  transition: opacity 200ms ease;
-}
-.dark .hero-spotlight {
-  mix-blend-mode: screen;
-}
-
-.hero-section {
-  min-height: calc(var(--hero-vh, 100vh) - var(--header-height, 4rem));
-  display: flex;
-  align-items: center;
-}
-
-.break-inside-avoid {
-  break-inside: avoid;
-}
-
-@keyframes heroGradientShift {
-  0% {
-    filter: hue-rotate(0deg) brightness(1);
-    background-position: 0% 50%;
-  }
-  50% {
-    filter: hue-rotate(10deg) brightness(1.03);
-    background-position: 50% 55%;
-  }
-  100% {
-    filter: hue-rotate(-10deg) brightness(0.98);
-    background-position: 100% 50%;
-  }
-}
-
-/* Motion-safe hover helpers */
-.hover-lift {
-  transition: transform 200ms ease, box-shadow 220ms ease;
-}
-.hover-lift:hover,
-.hover-lift:focus-visible {
-  transform: translateY(-2px);
-}
-.hover-glow:hover,
-.hover-glow:focus-visible {
-  box-shadow: 0 16px 40px rgba(110, 231, 249, 0.25);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hover-lift,
-  .glass,
-  .brutal {
-    transition-duration: 0s;
-  }
-  .hover-lift:hover,
-  .hover-lift:focus-visible,
-  .brutal:hover,
-  .brutal:focus-visible {
-    transform: none;
-  }
-  .animate-hero-gradient {
-    animation: none;
-  }
-  .hero-spotlight {
-    display: none;
-  }
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
 }

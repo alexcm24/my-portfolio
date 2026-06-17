@@ -1,47 +1,24 @@
-// components/Nav.tsx
 import Link from "next/link";
 import ThemeToggle from "@/components/ThemeToggle";
+import { SITE } from "@/lib/site";
 
 export default function Nav() {
   return (
-    <header
-      data-site-header
-      className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/30 dark:supports-[backdrop-filter]:bg-neutral-900/30"
-    >
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="flex h-16 items-center justify-between">
-          <Link href="/" prefetch className="focus-ring inline-flex items-center hover-lift transition-transform duration-200 ease-out">
-            <span className="brutal rounded-md px-2 py-1 text-sm font-bold tracking-wide">AC</span>
-            <span className="sr-only">Home</span>
-          </Link>
-
-          <nav aria-label="Primary">
-            <ul className="flex items-center gap-5">
-              {[
-                { href: "/#about", label: "About" },
-                { href: "/#projects", label: "Projects" },
-                { href: "/gallery", label: "Gallery" },
-                { href: "/#experience", label: "Experience" },
-                { href: "/#contact", label: "Contact" }
-              ].map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    prefetch
-                    className="focus-ring inline-flex items-center hover-lift transition-colors duration-200 ease-out hover:text-accent"
-                    aria-label={l.label}
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <ThemeToggle />
-              </li>
-            </ul>
-          </nav>
+    <header className="sticky top-0 z-20 border-b border-line bg-bg/80 backdrop-blur">
+      <nav className="mx-auto flex max-w-content items-center justify-between px-6 py-4">
+        <Link href="#top" className="text-sm font-semibold tracking-tight">
+          {SITE.name}
+        </Link>
+        <div className="flex items-center gap-5 font-mono text-xs text-muted">
+          <Link href="#work" className="hover:text-fg transition-colors">Work</Link>
+          <Link href="#about" className="hover:text-fg transition-colors">About</Link>
+          <Link href="#contact" className="hover:text-fg transition-colors">Contact</Link>
+          <a href={SITE.resume} target="_blank" rel="noopener noreferrer" className="text-accent hover:opacity-80">
+            Résumé ↗
+          </a>
+          <ThemeToggle />
         </div>
-      </div>
+      </nav>
     </header>
   );
 }
