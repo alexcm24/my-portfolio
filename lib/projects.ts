@@ -15,7 +15,7 @@ export const projects: Project[] = [
     num: "01",
     title: "AuraJewel",
     description:
-      "Production multi-tenant SaaS for independent jewelry retailers: authentication, Postgres row-level security, ticketing, printable receipts, and transactional email. Live and used by a real business.",
+      "Production web app for a jewelry retailer: authentication, Postgres row-level security, ticketing, printable receipts, and transactional email. Architected for multi-tenancy and live in daily use by a real business.",
     tech: ["Next.js", "TypeScript", "Supabase", "Resend", "Tailwind", "Radix UI"],
     links: [{ label: "Code", href: "https://github.com/alexcm24/AuraJewel" }],
     image: "/media/aurajewel-thumbnail.jpg",
