@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Project } from "@/lib/projects";
 import ProjectMedia from "@/components/ProjectMedia";
 
@@ -13,11 +14,18 @@ export default function ProjectRow({ project }: { project: Project }) {
         <span>{project.tech.join(" · ")}</span>
       </div>
       <div className="mt-3 flex flex-wrap gap-4 font-mono text-xs">
-        {project.links.map((l) => (
-          <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="text-accent hover:opacity-80">
-            {l.label} ↗
-          </a>
-        ))}
+        {project.links.map((l) =>
+          l.href.startsWith("/") ? (
+            // Pages on this site open in place; ↗ marks links that leave it
+            <Link key={l.href} href={l.href} className="text-accent hover:opacity-80">
+              {l.label}
+            </Link>
+          ) : (
+            <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="text-accent hover:opacity-80">
+              {l.label} ↗
+            </a>
+          ),
+        )}
       </div>
       <div className="mt-6 max-w-[760px]">
         <ProjectMedia src={project.image} alt={project.imageAlt ?? project.title} title={project.title} />

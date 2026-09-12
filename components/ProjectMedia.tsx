@@ -7,10 +7,16 @@ export default function ProjectMedia({
   src,
   alt,
   title,
+  aspect = "aspect-[16/9]",
+  sizes = "(max-width: 768px) 100vw, 700px",
+  priority = false,
 }: {
   src?: string;
   alt: string;
   title: string;
+  aspect?: string;
+  sizes?: string;
+  priority?: boolean;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -29,7 +35,7 @@ export default function ProjectMedia({
 
   if (!src) {
     return (
-      <div className="flex aspect-[16/9] w-full items-center justify-center rounded-lg border border-line bg-line/30 font-mono text-xs text-muted">
+      <div className={`flex ${aspect} w-full items-center justify-center rounded-lg border border-line bg-line/30 font-mono text-xs text-muted`}>
         screenshot coming soon
       </div>
     );
@@ -41,14 +47,15 @@ export default function ProjectMedia({
         type="button"
         onClick={() => setOpen(true)}
         aria-label={`Enlarge ${title} screenshot`}
-        className="group relative block aspect-[16/9] w-full overflow-hidden rounded-lg border border-line"
+        className={`group relative block ${aspect} w-full overflow-hidden rounded-lg border border-line`}
       >
         <Image
           src={src}
           alt={alt}
           fill
           className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
-          sizes="(max-width: 768px) 100vw, 700px"
+          sizes={sizes}
+          priority={priority}
         />
         <span className="pointer-events-none absolute bottom-2 right-2 rounded bg-black/60 px-2 py-1 font-mono text-[10px] text-white opacity-0 transition-opacity group-hover:opacity-100">
           Click to enlarge

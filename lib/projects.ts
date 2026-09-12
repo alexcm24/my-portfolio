@@ -13,19 +13,32 @@ export type Project = {
 export const projects: Project[] = [
   {
     num: "01",
+    title: "Pylot",
+    description:
+      "Checks whether AI shopping assistants like ChatGPT can read an online store's product data, scores it out of 100, and lists what to fix. Testing it on real stores like Nike and Amazon exposed bugs I fixed test-first, including a robots.txt check that never detected blocked AI crawlers. 193 backend and 11 frontend tests, CI, Sentry, SSRF protection and rate limiting.",
+    tech: ["React", "Vite", "FastAPI", "Celery", "Playwright", "PostgreSQL", "Redis", "Railway"],
+    links: [
+      { label: "Live", href: "https://pylot.run" },
+      { label: "Case study", href: "/work/pylot" },
+    ],
+    image: "/media/pylot-thumbnail.jpg",
+    imageAlt: "Pylot agent-readiness report with score gauge and sub-scores",
+  },
+  {
+    num: "02",
     title: "AuraJewel",
     description:
-      "Production web app for a jewelry retailer: authentication, Postgres row-level security, ticketing, printable receipts, and transactional email. Architected for multi-tenancy and live in daily use by a real business.",
+      "A web app a jewelry store uses every day to manage tickets, print receipts and email customers. It has user accounts and is built to host more stores, with Postgres row-level security keeping each store's data separate.",
     tech: ["Next.js", "TypeScript", "Supabase", "Resend", "Tailwind", "Radix UI"],
     links: [{ label: "Code", href: "https://github.com/alexcm24/AuraJewel" }],
     image: "/media/aurajewel-thumbnail.jpg",
     imageAlt: "AuraJewel dashboard",
   },
   {
-    num: "02",
+    num: "03",
     title: "Stockseer",
     description:
-      "Full-stack ML app that forecasts next-day stock prices with linear regression trained on ~2 years of daily closes, visualized as an interactive actual-vs-predicted chart.",
+      "Forecasts a stock's next-day price with a linear regression model trained on about two years of daily closing prices, and charts each prediction against the real price.",
     tech: ["Next.js", "TypeScript", "FastAPI", "scikit-learn", "Twelve Data"],
     links: [
       { label: "Live", href: "https://stockseer-three.vercel.app" },
@@ -36,10 +49,10 @@ export const projects: Project[] = [
     imageAlt: "Stockseer forecast chart",
   },
   {
-    num: "03",
+    num: "04",
     title: "Color Reader",
     description:
-      "Accessible web app that extracts dominant colors from any image using k-means clustering in CIE LAB color space, returning named colors with hex codes. Built with color-vision accessibility in mind.",
+      "Pulls the main colors out of any image using k-means clustering in the CIE LAB color space, and gives each one a name and hex code. I built it with color-blind users in mind.",
     tech: ["Next.js", "TypeScript", "Tailwind", "Color science"],
     links: [
       { label: "Live", href: "https://color-reader-one.vercel.app" },
