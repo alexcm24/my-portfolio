@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Brainstorm visual companion
 .superpowers/
+
+# Raw screenshots; the web-sized copies live in public/media
+/pylot screenshots/
