@@ -6,7 +6,7 @@ export default function Hero() {
     <section id="top" className="mx-auto max-w-content px-6 pt-20 pb-16 sm:pt-28">
       <Reveal>
         <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">{SITE.eyebrow}</p>
-        <h1 className="mt-5 max-w-[12ch] font-serif text-5xl font-semibold leading-[1.04] tracking-tight sm:text-6xl md:text-7xl">
+        <h1 className="mt-5 max-w-[16ch] font-serif text-5xl font-semibold leading-[1.04] tracking-tight sm:text-6xl md:text-7xl">
           {SITE.headline}
         </h1>
         <p className="mt-6 max-w-[48ch] text-base leading-relaxed text-muted sm:text-lg">{SITE.intro}</p>

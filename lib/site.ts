@@ -2,7 +2,7 @@ export const SITE = {
   name: "Alex Cañizares",
   role: "Software Engineer",
   eyebrow: "Software Engineer · CS @ UNF · Dec 2026",
-  headline: "I build software people use.",
+  headline: "Hi, I'm Alex.",
   intro:
     "I'm a computer science student who builds full-stack products: an app a jewelry store runs on every day, and Pylot, which checks whether AI shopping assistants can read an online store. I'm looking for internships and full-time new-grad roles, remote or on-site.",
   about:
