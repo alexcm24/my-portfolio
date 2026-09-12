@@ -12,7 +12,7 @@ export default function Hero() {
         <p className="mt-6 max-w-[48ch] text-base leading-relaxed text-muted sm:text-lg">{SITE.intro}</p>
         <div className="mt-8 flex flex-wrap items-center gap-3 text-sm">
           <a href="#work" className="rounded-sm bg-fg px-4 py-2 text-bg transition-opacity hover:opacity-90">
-            View Work →
+            View work
           </a>
           <a href={SITE.github} target="_blank" rel="noopener noreferrer" className="rounded-sm border border-line px-4 py-2 transition-colors hover:border-fg">
             GitHub

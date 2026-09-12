@@ -8,7 +8,7 @@ export default function ProjectList() {
     <section id="work" className="mx-auto max-w-content border-t border-line px-6 py-10">
       <Reveal>
         <div className="flex items-baseline gap-3 font-mono text-xs">
-          <span className="text-accent">{projects[0]?.num} — {last}</span>
+          <span className="text-accent">{projects[0]?.num}–{last}</span>
           <span className="uppercase tracking-[0.18em] text-muted">Selected Work</span>
         </div>
         <div className="mt-4">
