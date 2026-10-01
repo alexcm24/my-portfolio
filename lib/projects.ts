@@ -28,7 +28,7 @@ export const projects: Project[] = [
     num: "02",
     title: "AuraJewel",
     description:
-      "A web app a jewelry store uses every day to manage tickets, print receipts and email customers. It has user accounts and is built to host more stores, with Postgres row-level security keeping each store's data separate.",
+      "Production web application built for a jewelry retailer and used daily to manage service tickets, receipts, and customer communication. Designed for multi-store expansion with PostgreSQL row-level security providing tenant isolation.",
     tech: ["Next.js", "TypeScript", "Supabase", "Resend", "Tailwind", "Radix UI"],
     links: [{ label: "Code", href: "https://github.com/alexcm24/AuraJewel" }],
     image: "/media/aurajewel-thumbnail.jpg",
@@ -38,7 +38,7 @@ export const projects: Project[] = [
     num: "03",
     title: "Stockseer",
     description:
-      "Forecasts a stock's next-day price with a linear regression model trained on about two years of daily closing prices, and charts each prediction against the real price.",
+      "Deployed forecasting service: a FastAPI backend on Render trains a linear regression model on about two years of daily closing prices from the Twelve Data API and serves next-day predictions to a Next.js front end that charts each one against the actual price.",
     tech: ["Next.js", "TypeScript", "FastAPI", "scikit-learn", "Twelve Data"],
     links: [
       { label: "Live", href: "https://stockseer-three.vercel.app" },
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     num: "04",
     title: "Color Reader",
     description:
-      "Pulls the main colors out of any image using k-means clustering in the CIE LAB color space, and gives each one a name and hex code. I built it with color-blind users in mind.",
+      "Accessibility tool for color-blind users that extracts the dominant colors from any image with k-means clustering in CIE LAB color space, then labels each one with a name and hex code.",
     tech: ["Next.js", "TypeScript", "Tailwind", "Color science"],
     links: [
       { label: "Live", href: "https://color-reader-one.vercel.app" },

@@ -1,6 +1,6 @@
 export const SITE = {
   name: "Alex Cañizares",
-  eyebrow: "Software Engineering · CS @ UNF · Dec 2026",
+  eyebrow: "Software Engineer · Jacksonville, FL",
   intro: "Software engineer focused on backend, full-stack, and applied AI development.",
   summary:
     "I build web applications using Python, Java, TypeScript, and modern cloud tools, with an emphasis on APIs, databases, testing, AI integrations, and reliable deployment.",

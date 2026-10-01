@@ -1,6 +1,6 @@
 # Alex Canizares — Developer Portfolio
 
-My personal portfolio showcasing the projects I've built, my technical skills, and my background as a Computer Science student at the University of North Florida.
+My personal portfolio showcasing the projects I've built, my technical skills, and my background as a software engineer focused on backend, full-stack, and applied AI development.
 
 **Live site:** [my-portfolio-alexcanizares.vercel.app](https://my-portfolio-alexcanizares.vercel.app/)
 

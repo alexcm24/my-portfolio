@@ -133,7 +133,7 @@ export default function PylotCaseStudy() {
               Enter a store, and a minute or two later you get a score out of 100 and a ranked list of fixes.
             </p>
             <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-4 border-t border-line pt-6">
-              <Meta term="Role">Solo project</Meta>
+              <Meta term="Role">Sole engineer: design, build, deploy</Meta>
               <Meta term="Year">2026</Meta>
               <Meta term="Stack">React, FastAPI, Celery, Playwright, PostgreSQL, Redis, Railway</Meta>
               <Meta term="Live">
@@ -228,7 +228,7 @@ export default function PylotCaseStudy() {
             </Prose>
           </Section>
 
-          <Section title="What real stores taught me">
+          <Section title="Bugs real stores exposed">
             <Prose>
               <p>
                 The test suite was green, but scanning real stores and checking every result against the stores’ actual
