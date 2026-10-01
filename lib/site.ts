@@ -1,11 +1,13 @@
 export const SITE = {
   name: "Alex Cañizares",
   eyebrow: "Software Engineering · CS @ UNF · Dec 2026",
-  intro: "Computer Science student at the University of North Florida, graduating in December 2026.",
-  seeking: "Currently seeking new-grad and early-career software engineering opportunities.",
+  intro: "Software engineer focused on backend, full-stack, and applied AI development.",
+  summary:
+    "I build web applications using Python, Java, TypeScript, and modern cloud tools, with an emphasis on APIs, databases, testing, AI integrations, and reliable deployment.",
   about: [
-    "I’m originally from Barcelona, Spain, and now live in Florida, where I work as a Technical Specialist at Apple.",
-    "Outside of work, most of my experience comes from coursework and personal projects. This site is a collection of some of the projects I’ve worked on while learning software development.",
+    "I’m a software engineer based in Florida and currently completing my B.S. in Computer Science at the University of North Florida.",
+    "I work as a Technical Specialist at Apple, and outside of work I build backend and full-stack applications, including projects that integrate AI APIs and machine learning. Some of my recent work includes an e-commerce auditing platform and a web application used by a retail client.",
+    "I’m especially interested in backend development, APIs, databases, applied AI, testing, and building applications that are reliable and useful in practice.",
   ],
   recognition: "First place out of 45 teams, UNF Computing Symposium 2025",
   location: "Jacksonville, FL",

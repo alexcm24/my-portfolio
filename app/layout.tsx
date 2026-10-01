@@ -12,10 +12,10 @@ const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", displ
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: SITE.name,
-  description: `${SITE.intro} ${SITE.seeking}`,
+  description: `${SITE.intro} ${SITE.summary}`,
   openGraph: {
     title: SITE.name,
-    description: `${SITE.intro} ${SITE.seeking}`,
+    description: `${SITE.intro} ${SITE.summary}`,
     url: SITE.url,
     type: "website",
   },

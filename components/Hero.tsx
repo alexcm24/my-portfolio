@@ -10,7 +10,7 @@ export default function Hero() {
           {SITE.name}
         </h1>
         <p className="mt-6 max-w-[48ch] text-base leading-relaxed text-muted sm:text-lg">{SITE.intro}</p>
-        <p className="mt-3 max-w-[48ch] text-base leading-relaxed text-muted sm:text-lg">{SITE.seeking}</p>
+        <p className="mt-3 max-w-[48ch] text-base leading-relaxed text-muted sm:text-lg">{SITE.summary}</p>
         <div className="mt-8 flex flex-wrap items-center gap-3 text-sm">
           <a href="#work" className="rounded-sm bg-fg px-4 py-2 text-bg transition-opacity hover:opacity-90">
             View work
