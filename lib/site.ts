@@ -1,15 +1,21 @@
 export const SITE = {
   name: "Alex Cañizares",
-  eyebrow: "Software Engineer · Jacksonville, FL",
-  intro: "Software engineer focused on backend, full-stack, and applied AI development.",
-  summary:
-    "I build web applications using Python, Java, TypeScript, and modern cloud tools, with an emphasis on APIs, databases, testing, AI integrations, and reliable deployment.",
-  about: [
-    "I’m a software engineer based in Florida and currently completing my B.S. in Computer Science at the University of North Florida.",
-    "I work as a Technical Specialist at Apple, and outside of work I build backend and full-stack applications, including projects that integrate AI APIs and machine learning. Some of my recent work includes an e-commerce auditing platform and a web application used by a retail client.",
-    "I’m especially interested in backend development, APIs, databases, applied AI, testing, and building applications that are reliable and useful in practice.",
+  title: "Software engineer building backend, full‑stack and AI products",
+  description:
+    "Software engineer in Jacksonville, FL, building backend, full-stack and applied AI products. Pylot, AuraJewel, Stockseer and Color Reader.",
+  lead:
+    "I care about the parts of software people rely on without noticing: clear APIs, sound data and systems that hold up. Lately, more and more of that work involves applied AI.",
+  facts: [
+    { term: "Focus", value: "Backend and full-stack" },
+    { term: "Interested in", value: "Applied AI" },
+    { term: "Based in", value: "Jacksonville, Florida" },
+    { term: "Open to", value: "Software engineering roles" },
   ],
-  recognition: "First place out of 45 teams, UNF Computing Symposium 2025",
+  about: [
+    "I like building software all the way to the part where real people use it: a service desk a retailer's staff use every day, a scanner anyone can point at their store.",
+    "Most of my work sits on the backend: APIs, databases, job queues and the tests around them. I'm most interested in applied AI, where the hard part is usually the data and the plumbing around a model.",
+    "I work as a Technical Specialist at Apple and I'm completing a B.S. in Computer Science at the University of North Florida, where my team placed first of 45 at the 2025 Computing Symposium.",
+  ],
   location: "Jacksonville, FL",
   email: "canizaresalex24@gmail.com",
   github: "https://github.com/alexcm24",
